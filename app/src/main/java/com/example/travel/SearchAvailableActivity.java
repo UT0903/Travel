@@ -39,12 +39,12 @@ public class SearchAvailableActivity extends AppCompatActivity {
     }
 
     public void search(View v) {
-        EditText searchAvailableDest = (EditText) findViewById(R.id.search_available_dest);
-        EditText searchAvailableDate = (EditText) findViewById(R.id.search_available_date);
-        searchAvailableDest.getText().toString().trim();
-        searchAvailableDate.getText().toString().trim();
-        Api.getAvaliableData();
-        Api.get
+        EditText dest = (EditText) findViewById(R.id.search_available_dest);
+        EditText date = (EditText) findViewById(R.id.search_available_date);
+        dest.getText().toString().trim();
+        date.getText().toString().trim();
+        //getIntent().putExtra("");
+
 
 
 
