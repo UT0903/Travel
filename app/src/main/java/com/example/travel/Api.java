@@ -64,4 +64,8 @@ public class Api {
             return null;
         }
     }
+    public static ArrayList<String> findAvaliableTrip(String dest, String date){
+
+        return null;
+    }
 }
