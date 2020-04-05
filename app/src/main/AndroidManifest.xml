@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QueryTripActivity"></activity>
+        <activity android:name=".PickRegionActivity"></activity>
         <activity android:name=".ModifyTripActivity" />
         <activity android:name=".OrderTripActivity" />
         <activity android:name=".SearchAvailableActivity" />
