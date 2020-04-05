@@ -6,8 +6,16 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +54,7 @@ public class Api {
             return null;
         }
     }
-    private String mapTravelCode(Context context, String TravelcodeName){
+    public static String mapNameToCode(Context context, String TravelcodeName){
         try{
             JSONArray codeArray = new JSONArray(loadTravelCode(context));
             for(int i = 0; i < codeArray.length(); i++){
@@ -64,8 +72,26 @@ public class Api {
             return null;
         }
     }
-    public static ArrayList<String> findAvaliableTrip(String dest, String date){
 
-        return null;
-    }
+
+
+    /*public void search(View view){
+        db.collection("data")
+                .whereEqualTo("travel_code", et.getText().toString())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("tag", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.d("tag", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+        return;
+    }*/
 }
