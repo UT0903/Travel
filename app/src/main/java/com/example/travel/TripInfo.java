@@ -1,20 +1,23 @@
 package com.example.travel;
 
-public class TripInfo {
-    public String title, travel_code_name, start_date, end_date, travel_code;
-    public int lower_bound, upper_bound, price;
-    public int image;
+import java.io.Serializable;
+
+public class TripInfo implements Serializable {
+    private String title, travel_code_name, start_date, end_date, travel_code;
+    private String lower_bound, upper_bound, price;
+    private int image;
     public TripInfo(){}
     public TripInfo(String title, String travel_code, String start_date,
-                    String end_date, String lower_bound, String upper_bound, String price) {
+                    String end_date, String lower_bound, String upper_bound, String price, int image) {
         this.title = title;
         this.travel_code_name = this.travel_code_name;
         this.travel_code = travel_code;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.lower_bound = Integer.parseInt(lower_bound);
-        this.upper_bound = Integer.parseInt(upper_bound);
-        this.price = Integer.parseInt(price);
+        this.lower_bound = lower_bound;
+        this.upper_bound = upper_bound;
+        this.price = price;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -57,27 +60,27 @@ public class TripInfo {
         this.travel_code = travel_code;
     }
 
-    public int getLower_bound() {
+    public String getLower_bound() {
         return lower_bound;
     }
 
-    public void setLower_bound(int lower_bound) {
+    public void setLower_bound(String lower_bound) {
         this.lower_bound = lower_bound;
     }
 
-    public int getUpper_bound() {
+    public String getUpper_bound() {
         return upper_bound;
     }
 
-    public void setUpper_bound(int upper_bound) {
+    public void setUpper_bound(String upper_bound) {
         this.upper_bound = upper_bound;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

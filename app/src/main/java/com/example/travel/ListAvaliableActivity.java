@@ -26,28 +26,25 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ListAvaliableActivity extends AppCompatActivity {
-
+    View prog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_avaliable);
+        prog = findViewById(R.id.progress_circle);
+        //showLoading();
         Intent it = getIntent();
         String dest = it.getStringExtra("dest");
         String date = it.getStringExtra("date");
         //Toast.makeText(this, "dest = " + dest + "date =" + date + "=", Toast.LENGTH_LONG).show();
         String code = Api.mapNameToCode(this, dest);
-        ArrayList <TripInfo> result = new ArrayList<>();
 
-        TripInfo a = new TripInfo();
-        a.setImage(R.drawable.test);
-        result.add(a);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // MemberAdapter 會在步驟7建立
-        recyclerView.setAdapter(new TripInfoAdapter(this, result));
+        //recyclerView.setAdapter(new TripInfoAdapter(this, result));
 
-        //queryDatabase(code);
+        queryDatabase(code);
     }
 
     public void queryDatabase(String code){
@@ -70,25 +67,29 @@ public class ListAvaliableActivity extends AppCompatActivity {
                                 String upper_bound = res.get("upper_bound").toString();
                                 String price = res.get("price").toString();
                                 TripInfo obj = new TripInfo(title, travel_code, start_date,
-                                        end_date, lower_bound, upper_bound, price);
+                                        end_date, lower_bound, upper_bound, price, R.drawable.test);
                                 result.add(obj);
                             }
+                            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+                            // MemberAdapter 會在步驟7建立
+                            recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), result));
                         } else {
                             Log.d("tag", "Error getting documents: ", task.getException());
                         }
-                        //hideLoading();
+                        hideLoading();
                     }
                 });
     }
 
-    /*prog = findViewById(R.id.progressCircle);
+
     public void showLoading(){
         prog.setVisibility(View.VISIBLE);
     }
 
     public void hideLoading(){
         prog.setVisibility(View.GONE);
-    }*/
+    }
 }
 
 class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
@@ -109,20 +110,23 @@ class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(TripInfoAdapter.ViewHolder holder, int position) {
         final TripInfo list = trip_list.get(position);
-        holder.imageId.setImageResource(list.image);
-        //holder.titleId.setText(String.valueOf(list.title));
-        //String date = list.start_date + "~" + list.end_date;
-        //holder.dateId.setText(date);
-        //holder.priceId.setText(list.price);
+        holder.imageId.setImageResource(list.getImage());
+        holder.titleId.setText(String.valueOf(list.getTitle()));
+        String date = list.getStart_date() + "~" + list.getEnd_date();
+        holder.dateId.setText(date);
+        holder.priceId.setText(list.getPrice());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView imageView = new ImageView(context);
+                /*ImageView imageView = new ImageView(context);
                 imageView.setImageResource(list.getImage());
                 Toast toast = new Toast(context);
                 toast.setView(imageView);
                 toast.setDuration(Toast.LENGTH_SHORT);
-                toast.show();
+                toast.show();*/
+                Intent it = new Intent(context, MoreTripInfoActivity.class);
+                it.putExtra("data", list);
+                context.startActivity(it);
             }
         });
     }
@@ -135,13 +139,13 @@ class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
     //Adapter 需要一個 ViewHolder，只要實作它的 constructor 就好，保存起來的view會放在itemView裡面
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imageId;
-        //TextView titleId, dateId, priceId;
+        TextView titleId, dateId, priceId;
         ViewHolder(View itemView) {
             super(itemView);
             imageId = (ImageView) itemView.findViewById(R.id.imageId);
-            //titleId = (TextView) itemView.findViewById(R.id.titleId);
-            //dateId = (TextView) itemView.findViewById(R.id.dateId);
-            //priceId = (TextView) itemView.findViewById(R.id.priceId);
+            titleId = (TextView) itemView.findViewById(R.id.titleId);
+            dateId = (TextView) itemView.findViewById(R.id.dateId);
+            priceId = (TextView) itemView.findViewById(R.id.priceId);
 
         }
     }
