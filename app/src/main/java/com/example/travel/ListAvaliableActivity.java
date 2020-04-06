@@ -26,27 +26,20 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ListAvaliableActivity extends AppCompatActivity {
-    View prog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_avaliable);
-        prog = findViewById(R.id.progress_circle);
-        //showLoading();
+        //get info from SearchAvailableActivity.java
         Intent it = getIntent();
         String dest = it.getStringExtra("dest");
         String date = it.getStringExtra("date");
         //Toast.makeText(this, "dest = " + dest + "date =" + date + "=", Toast.LENGTH_LONG).show();
         String code = Api.mapNameToCode(this, dest);
-
-        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        // MemberAdapter 會在步驟7建立
-        //recyclerView.setAdapter(new TripInfoAdapter(this, result));
-
         queryDatabase(code);
     }
 
+    //Query database via asyc
     public void queryDatabase(String code){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("data")
@@ -70,28 +63,45 @@ public class ListAvaliableActivity extends AppCompatActivity {
                                         end_date, lower_bound, upper_bound, price, R.drawable.test);
                                 result.add(obj);
                             }
-                            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                            // MemberAdapter 會在步驟7建立
-                            recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), result));
+                            getImageFromCloud(result);
+                            //build RecycleView
+
                         } else {
                             Log.d("tag", "Error getting documents: ", task.getException());
                         }
-                        hideLoading();
+                        //hide loading icon
+                        View prog = findViewById(R.id.progress_circle);
+                        prog.setVisibility(View.GONE);
                     }
                 });
     }
+    public void getImageFromCloud(ArrayList<TripInfo> result){
+        /*StorageReference storageRef = storage.getReference().child();
+
+        StorageReference islandRef = storageRef.child("images/island.jpg");
+
+        final long ONE_MEGABYTE = 1024 * 1024;
+        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Data for "images/island.jpg" is returns, use this as needed
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });*/
 
 
-    public void showLoading(){
-        prog.setVisibility(View.VISIBLE);
-    }
 
-    public void hideLoading(){
-        prog.setVisibility(View.GONE);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), result));
     }
 }
 
+//Modify RecyclerView Adapter
 class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
     private Context context;
     private ArrayList<TripInfo> trip_list;
@@ -116,14 +126,9 @@ class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
         holder.dateId.setText(date);
         holder.priceId.setText(list.getPrice());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+            //Set onClick event to go to MoreTripInfoActivity.java
             @Override
             public void onClick(View v) {
-                /*ImageView imageView = new ImageView(context);
-                imageView.setImageResource(list.getImage());
-                Toast toast = new Toast(context);
-                toast.setView(imageView);
-                toast.setDuration(Toast.LENGTH_SHORT);
-                toast.show();*/
                 Intent it = new Intent(context, MoreTripInfoActivity.class);
                 it.putExtra("data", list);
                 context.startActivity(it);

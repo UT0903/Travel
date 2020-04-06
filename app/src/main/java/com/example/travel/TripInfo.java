@@ -1,7 +1,7 @@
 package com.example.travel;
 
 import java.io.Serializable;
-
+//Prototype of class TripInfo
 public class TripInfo implements Serializable {
     private String title, travel_code_name, start_date, end_date, travel_code;
     private String lower_bound, upper_bound, price;

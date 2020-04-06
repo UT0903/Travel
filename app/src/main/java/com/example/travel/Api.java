@@ -6,23 +6,14 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Map;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+// Static function about querying data
 public class Api {
+    //a helper function to load data from travel_code.json
     private static String loadTravelCode(Context context){
         String json = null;
         try {
@@ -38,6 +29,7 @@ public class Api {
         }
         return json;
     }
+
     public static ArrayList<String> getTravelCodeName(Context context){
         try{
             ArrayList<String> result = new ArrayList();
@@ -72,26 +64,4 @@ public class Api {
             return null;
         }
     }
-
-
-
-    /*public void search(View view){
-        db.collection("data")
-                .whereEqualTo("travel_code", et.getText().toString())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("tag", document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.d("tag", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-
-        return;
-    }*/
 }
