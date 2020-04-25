@@ -25,6 +25,10 @@
         android:layout_width="wrap_content"
         android:text="查詢行程"
         android:onClick="queryTrip" />
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登出"
+        android:onClick="signout"/>
 
 </LinearLayout>
