@@ -39,20 +39,19 @@ public class SearchAvailableActivity extends AppCompatActivity {
     }
 
     public void search(View v) {
-        EditText aval_dest = (EditText) findViewById(R.id.search_available_dest);
-        EditText aval_date = (EditText) findViewById(R.id.search_available_date);
-        String dest = aval_dest.getText().toString().trim();
-        String date = aval_date.getText().toString().trim();
-        if(dest.compareTo("") == 0){
-            showMessage("請輸入目的地");
-            return;
-        }
-        else {
-            Intent it = new Intent(SearchAvailableActivity.this, ListAvaliableActivity.class);
-            it.putExtra("dest", dest);
-            it.putExtra("date", date);
-            startActivity(it);
-        }
+        EditText searchAvailableDest = (EditText) findViewById(R.id.search_available_dest);
+        EditText searchAvailableDate = (EditText) findViewById(R.id.search_available_date);
+        searchAvailableDest.getText().toString().trim();
+        searchAvailableDate.getText().toString().trim();
+        Api.getAvaliableData();
+        Api.get
+
+
+
+
+        /*Intent intent = new Intent(SearchAvailableActivity.this, SearchAvailableListActivity.class);
+        intent.putExtra("Hotel_list", result);
+        startActivity(intent);*/
     }
 
     public void regionPicker(View v) {
