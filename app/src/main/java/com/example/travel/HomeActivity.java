@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     public void queryTrip(View v){
         Intent it = new Intent(HomeActivity.this, OrderActivity.class);
         startActivity(it);
+        
     }
 
     public void signout(View view){
