@@ -5,33 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-public class MainActivity extends AppCompatActivity {
 
+import com.google.firebase.auth.FirebaseAuth;
+
+public class MainActivity extends AppCompatActivity {
+    private Intent intent;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser() != null)
+            jump();
         setContentView(R.layout.activity_main);
     }
-    public void searchAvailable(View v){
-        //Toast.makeText(MainActivity.this, "here", Toast.LENGTH_SHORT).show();
-        Intent it = new Intent(MainActivity.this, SearchAvailableActivity.class);
-        startActivity(it);
-    }
-    public void orderTrip(View v){
-        Intent it = new Intent(MainActivity.this, OrderTripActivity.class);
-        startActivity(it);
-    }
-    public void modifyTrip(View v){
-        Intent it = new Intent(MainActivity.this, ModifyTripActivity.class);
-        startActivity(it);
-    }
-    public void queryTrip(View v){
-        Intent it = new Intent(MainActivity.this, QueryTripActivity.class);
-        startActivity(it);
+
+    private void jump(){
+        intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 
+    public void jumpLogin(View view){
+        intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void jumSignup(View view){
+        intent = new Intent(MainActivity.this, SignupActivity.class);
+        startActivity(intent);
+    }
 }
