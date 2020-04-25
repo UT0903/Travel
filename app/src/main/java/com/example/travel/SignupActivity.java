@@ -33,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     public void Signup(View view){
+        Log.v(TAG, "Signup");
         mAuth.createUserWithEmailAndPassword(username.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

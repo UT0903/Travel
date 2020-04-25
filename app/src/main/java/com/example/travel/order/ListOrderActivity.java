@@ -14,6 +14,7 @@ import android.util.Log;
 import com.example.travel.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,17 +25,20 @@ import java.util.Map;
 
 public class ListOrderActivity extends AppCompatActivity {
     private String orderID;
-    private String userName = "testuser";
+    private String userName;
     private List<Order> orderList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Intent intent;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_order);
         orderID = getIntent().getStringExtra("orderID");
+        mAuth = FirebaseAuth.getInstance();
+        userName = mAuth.getCurrentUser().getDisplayName();
         getOrderList();
     }
     private void setRecyclerView(){
