@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".order.OrderActivity">
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="查詢所有訂單"
+    android:onClick="search_all"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/order_code"
+        android:hint="請輸入訂單編號"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登入"
-        android:onClick="jumpLogin"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="註冊"
-        android:onClick="jumSignup"/>
+        android:text="訂單編號查詢"
+        android:onClick="search_by_code"/>
 </LinearLayout>

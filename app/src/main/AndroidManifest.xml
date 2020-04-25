@@ -9,12 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MoreTripInfoActivity"></activity>
-        <activity android:name=".ListAvaliableActivity" />
-        <activity android:name=".PickRegionActivity" />
-        <activity android:name=".ModifyTripActivity" />
-        <activity android:name=".OrderTripActivity" />
-        <activity android:name=".SearchAvailableActivity" />
+        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".order.ListOrderActivity" />
+        <activity android:name=".order.OrderActivity" />
+        <activity android:name=".MoreTripInfoActivity" />
+        <activity android:name=".ListAvaliableActivity" />
+        <activity android:name=".PickRegionActivity" />
+        <activity android:name=".OrderTripActivity" />
+        <activity android:name=".SearchAvailableActivity" />
     </application>
 
 </manifest>
