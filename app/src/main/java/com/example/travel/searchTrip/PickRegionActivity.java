@@ -1,4 +1,4 @@
-package com.example.travel;
+package com.example.travel.searchTrip;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.example.travel.Api;
+import com.example.travel.R;
 
 import java.util.ArrayList;
 

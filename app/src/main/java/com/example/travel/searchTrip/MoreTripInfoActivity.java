@@ -1,8 +1,11 @@
-package com.example.travel;
+package com.example.travel.searchTrip;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.travel.R;
+import com.example.travel.TripInfo;
 
 public class MoreTripInfoActivity extends AppCompatActivity {
 

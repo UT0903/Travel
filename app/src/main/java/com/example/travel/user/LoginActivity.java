@@ -1,4 +1,4 @@
-package com.example.travel;
+package com.example.travel.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.travel.HomeActivity;
+import com.example.travel.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,11 +28,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        username = (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
     }
 
     public void Login(View view){
+        EditText username = (EditText)findViewById(R.id.username);
+        EditText password = (EditText)findViewById(R.id.password);
+        if(username.getText().toString().trim().compareTo("") == 0 || password.getText().toString().trim().compareTo("") == 0){
+            Log.d(TAG, "failed");
+            Toast.makeText(LoginActivity.this, "登入失敗，請確認帳號密碼是否正確",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -41,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

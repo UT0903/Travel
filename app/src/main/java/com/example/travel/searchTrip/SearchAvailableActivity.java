@@ -1,4 +1,4 @@
-package com.example.travel;
+package com.example.travel.searchTrip;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,8 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.travel.R;
 
 import java.util.Calendar;
 
