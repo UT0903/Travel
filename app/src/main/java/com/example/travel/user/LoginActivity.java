@@ -33,20 +33,21 @@ public class LoginActivity extends AppCompatActivity {
     public void Login(View view){
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
-        if(username.getText().toString().trim().compareTo("") == 0 || password.getText().toString().trim().compareTo("") == 0){
+        String name = username.getText().toString().trim();
+        String pwd = password.getText().toString().trim();
+        if(name.compareTo("") == 0 || pwd.compareTo("") == 0){
             Log.d(TAG, "failed");
             Toast.makeText(LoginActivity.this, "登入失敗，請確認帳號密碼是否正確",
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString())
+        mAuth.signInWithEmailAndPassword(name, pwd)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
                             intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {
