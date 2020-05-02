@@ -6,33 +6,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.travel.user.LoginActivity;
-import com.example.travel.user.SignupActivity;
+import com.example.travel.searchTrip.PickRegionActivity;
+import com.example.travel.user.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseUser user;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser() != null)
-            jump();
+        getSupportActionBar().hide();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-    }
 
-    private void jump(){
-        intent = new Intent(MainActivity.this, HomeActivity.class);
-        startActivity(intent);
     }
+    public void searchAvailable(View v){
+        //Toast.makeText(HomeActivity.this, "here", Toast.LENGTH_SHORT).show();
+        Intent it = new Intent(MainActivity.this, PickRegionActivity.class);
+        startActivity(it);
+    }
+    public void myAccount(View v){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null){
+            Intent it = new Intent(MainActivity.this, RegisterActivity.class);
+            startActivity(it);
+        }
+        else{
+            //not done yet
+        }
+    }
+    /*public void signOut(View view){
+        mAuth.signOut();
+        intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }*/
 
-    public void jumpLogin(View view){
-        intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-    }
-
-    public void jumSignup(View view){
-        intent = new Intent(MainActivity.this, SignupActivity.class);
-        startActivity(intent);
-    }
 }

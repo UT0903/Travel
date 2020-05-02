@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.travel.HomeActivity;
+import com.example.travel.MainActivity;
 import com.example.travel.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -128,7 +128,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
             builder.setPositiveButton("回到上一頁", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // User clicked OK button
-                    intent = new Intent(context, HomeActivity.class);
+                    intent = new Intent(context, MainActivity.class);
                     context.startActivity(intent);
                 }
             });

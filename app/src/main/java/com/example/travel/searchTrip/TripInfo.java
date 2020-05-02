@@ -1,4 +1,4 @@
-package com.example.travel;
+package com.example.travel.searchTrip;
 
 import java.io.Serializable;
 //Prototype of class TripInfo

@@ -2,19 +2,15 @@ package com.example.travel.searchTrip;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.travel.R;
-
-import java.util.Calendar;
 
 public class SearchAvailableActivity extends AppCompatActivity {
     private static final int REQ_FROM_A = 1;
@@ -49,7 +45,7 @@ public class SearchAvailableActivity extends AppCompatActivity {
             return;
         }
         else {
-            Intent it = new Intent(SearchAvailableActivity.this, ListAvaliableActivity.class);
+            Intent it = new Intent(SearchAvailableActivity.this, ListAvailableActivity.class);
             it.putExtra("dest", dest);
             it.putExtra("date", date);
             startActivity(it);
@@ -72,17 +68,5 @@ public class SearchAvailableActivity extends AppCompatActivity {
     }
 
 
-    public void datePicker(View v) {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int day) {
-                String dateTime = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
-                editDate.setText(dateTime);
-            }
-        }, year, month, day).show();
-    }
+
 }

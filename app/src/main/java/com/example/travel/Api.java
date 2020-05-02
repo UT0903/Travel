@@ -14,7 +14,7 @@ import org.json.JSONObject;
 // Static function about querying data
 public class Api {
     //a helper function to load data from travel_code.json
-    private static String loadTravelCode(Context context){
+    /*private static String loadTravelCode(Context context){
         String json = null;
         try {
             InputStream is = context.getAssets().open("travel_code.json");
@@ -28,16 +28,19 @@ public class Api {
             return null;
         }
         return json;
-    }
+    }*/
 
-    public static ArrayList<String> getTravelCodeName(Context context){
+    /*public static ArrayList<String> getTravelCodeName(Context context){
         try{
             ArrayList<String> result = new ArrayList();
             JSONArray codeArray = new JSONArray(loadTravelCode(context));
             for(int i = 0; i < codeArray.length(); i++){
                 JSONObject parser = codeArray.getJSONObject(i);
                 String name = parser.getString("travel_code_name");
-                result.add(name);
+                String[] nameArr = name.split("．");
+                for(int j = 0; j < nameArr.length; j++){
+                    result.add(nameArr[j]);
+                }
             }
             return result;
         }
@@ -45,8 +48,8 @@ public class Api {
             Log.e("HotelList", "Problem parsing the travel code JSON results", e);
             return null;
         }
-    }
-    public static String mapNameToCode(Context context, String TravelcodeName){
+    }*/
+    /*public static String mapNameToCode(Context context, String TravelcodeName){
         try{
             JSONArray codeArray = new JSONArray(loadTravelCode(context));
             for(int i = 0; i < codeArray.length(); i++){
@@ -63,5 +66,5 @@ public class Api {
             Log.e("HotelList", "Problem mapping the travel code JSON results", e);
             return null;
         }
-    }
+    }*/
 }

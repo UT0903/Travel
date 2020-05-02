@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.travel.HomeActivity;
+import com.example.travel.MainActivity;
 import com.example.travel.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +21,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText username, password, name;
+    private EditText username, password, name, passwordDouble;
     private String TAG = "Signup";
     private Intent intent;
     @Override
@@ -32,10 +32,17 @@ public class SignupActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         name = (EditText)findViewById(R.id.name);
+        passwordDouble = (EditText)findViewById(R.id.passwordDouble);
     }
 
     public void Signup(View view){
         Log.v(TAG, "Signup");
+        if(password.getText().toString().compareTo(passwordDouble.getText().toString()) != 0){
+            Toast.makeText(SignupActivity.this, "兩次密碼輸入不相同", Toast.LENGTH_SHORT).show();
+            password.setText("");
+            passwordDouble.setText("");
+            return;
+        }
         mAuth.createUserWithEmailAndPassword(username.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -72,7 +79,7 @@ public class SignupActivity extends AppCompatActivity {
                             }
                         }
                     });
-            intent = new Intent(SignupActivity.this, HomeActivity.class);
+            intent = new Intent(SignupActivity.this, MyAccountActivity.class);
             startActivity(intent);
         }
     }

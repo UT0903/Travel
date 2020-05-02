@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.travel.R;
-import com.example.travel.TripInfo;
 
 import java.util.ArrayList;
 

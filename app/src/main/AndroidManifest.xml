@@ -10,10 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".user.SignupActivity"></activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".user.MyAccountActivity" />
+        <activity android:name=".user.SignupActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".user.LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".user.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +24,8 @@
         <activity android:name=".order.ListOrderActivity" />
         <activity android:name=".order.OrderActivity" />
         <activity android:name=".searchTrip.MoreTripInfoActivity" />
-        <activity android:name=".searchTrip.ListAvaliableActivity" />
+        <activity android:name=".searchTrip.ListAvailableActivity" />
         <activity android:name=".searchTrip.PickRegionActivity" />
-        <activity android:name=".OrderTripActivity" />
         <activity android:name=".searchTrip.SearchAvailableActivity" />
     </application>
 
