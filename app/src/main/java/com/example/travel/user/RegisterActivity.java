@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void jumSignUp(View view){
-        intent = new Intent(RegisterActivity.this, SignupActivity.class);
+        intent = new Intent(RegisterActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
 }

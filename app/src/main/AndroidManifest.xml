@@ -11,16 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".user.MyAccountActivity" />
-        <activity android:name=".user.SignupActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".user.LoginActivity" />
-        <activity android:name=".user.RegisterActivity">
+        <activity android:name=".user.SignUpActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.RegisterActivity"/>
         <activity android:name=".order.ListOrderActivity" />
         <activity android:name=".order.OrderActivity" />
         <activity android:name=".searchTrip.MoreTripInfoActivity" />

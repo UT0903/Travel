@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.travel.searchTrip.PickRegionActivity;
+import com.example.travel.user.MyAccountActivity;
 import com.example.travel.user.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,14 +35,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
         }
         else{
-            //not done yet
+            Intent it = new Intent(MainActivity.this, MyAccountActivity.class);
+            startActivity(it);
         }
     }
-    /*public void signOut(View view){
-        mAuth.signOut();
-        intent = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }*/
-
 }
