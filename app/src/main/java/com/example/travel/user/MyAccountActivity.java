@@ -1,28 +1,31 @@
 package com.example.travel.user;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.travel.GlobalVariable;
 import com.example.travel.MainActivity;
+import com.example.travel.MyAppCompatActivity;
 import com.example.travel.R;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class MyAccountActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+public class MyAccountActivity extends MyAppCompatActivity {
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
-        mAuth = FirebaseAuth.getInstance();
+        gv = (GlobalVariable)getApplicationContext();
     }
-
-    public void signOut(View view){
-        mAuth.signOut();
+    public void listMyOrder(View view){
+        intent = new Intent(MyAccountActivity.this, ListMyOrderActivity.class);
+        startActivity(intent);
+    }
+    public void Logout(View view){
+        gv.isLogin = false;
+        gv.documentReference = null;
         intent = new Intent(MyAccountActivity.this, MainActivity.class);
+        finish();
         startActivity(intent);
     }
 }

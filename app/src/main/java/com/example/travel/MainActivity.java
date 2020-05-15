@@ -12,14 +12,12 @@ import com.example.travel.user.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MyAppCompatActivity {
     private FirebaseUser user;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
     }
@@ -29,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it);
     }
     public void myAccount(View v){
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user == null){
+        GlobalVariable gv = (GlobalVariable)getApplicationContext();
+        if(gv.isLogin == false){
             Intent it = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(it);
         }

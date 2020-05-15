@@ -16,12 +16,14 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我的訂單"/>
+        android:text="我的訂單"
+        android:onClick="listMyOrder"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="登出"
-        android:onClick="signOut"/>
+        android:onClick="Logout"/>
 
 
 

@@ -13,37 +13,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.travel.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 //Modify RecyclerView Adapter
 public class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<TripInfo> trip_list;
+    private ArrayList<Map<String, Object>> trip_list;
 
-    TripInfoAdapter(Context context, ArrayList<TripInfo> trip_list) {
+    TripInfoAdapter(Context context, ArrayList<Map<String, Object>> trip_list) {
         this.context = context;
         this.trip_list = trip_list;
     }
 
     @Override
     public TripInfoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_list_cardview_available, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_list_available_cardview, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(TripInfoAdapter.ViewHolder holder, int position) {
-        final TripInfo list = trip_list.get(position);
-        holder.imageId.setImageResource(list.getImage());
-        holder.titleId.setText(String.valueOf(list.getTitle()));
-        String date = list.getStart_date() + "~" + list.getEnd_date();
+        final HashMap<String, Object> list = (HashMap<String, Object>) trip_list.get(position);
+        holder.imageId.setImageResource((int)list.get("picture"));
+        holder.titleId.setText(String.valueOf(list.get("title").toString()));
+        String date = list.get("start_date") + "~" + list.get("end_date");
         holder.dateId.setText(date);
-        holder.priceId.setText(list.getPrice());
+        holder.priceId.setText(list.get("price").toString());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             //Set onClick event to go to MoreTripInfoActivity.java
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(context, MoreTripInfoActivity.class);
                 it.putExtra("data", list);
+                //it.setFlags(it.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(it);
             }
         });

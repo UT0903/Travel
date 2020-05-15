@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.ListMyOrderActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我的訂單"
+        />
+    <TextView
+        android:id="@+id/list_my_order_noOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您尚無任何訂單"
+        android:visibility="gone"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_my_order_recyclerView"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+</LinearLayout>

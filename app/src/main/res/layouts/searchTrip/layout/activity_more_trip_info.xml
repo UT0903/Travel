@@ -39,11 +39,18 @@
         android:text="+"
         />
     <Button
-        android:id="@+id/trip_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="送出訂單"
         android:onClick="submit"
+        android:id="@+id/moreTripInfo_submitBtn"
+        android:enabled="false"
         />
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="刪除訂單"
+        android:onClick="delete"
+        android:id="@+id/moreTripInfo_deleteBtn"
+        />
 </LinearLayout>

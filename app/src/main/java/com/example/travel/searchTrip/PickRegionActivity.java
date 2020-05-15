@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.travel.MyAppCompatActivity;
 import com.example.travel.R;
 
 import org.json.JSONArray;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PickRegionActivity extends AppCompatActivity {
+public class PickRegionActivity extends MyAppCompatActivity {
     ArrayList<String> str = new ArrayList<String>();
     Map<String, String> map = new HashMap<String, String>();
     ArrayAdapter adapter;
@@ -73,8 +74,8 @@ public class PickRegionActivity extends AppCompatActivity {
                 String travel_code = parser.getString("travel_code");
                 String[] nameArr = name.split("．");
                 for(int j = 0; j < nameArr.length; j++){
-                    str.add(nameArr[j]);
-                    map.put(nameArr[j], travel_code);
+                    str.add(nameArr[j].trim());
+                    map.put(nameArr[j].trim(), travel_code);
                 }
             }
             return;

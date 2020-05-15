@@ -12,10 +12,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.travel.MyAppCompatActivity;
 import com.example.travel.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,14 +32,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
-public class ListAvailableActivity extends AppCompatActivity {
+public class ListAvailableActivity extends MyAppCompatActivity {
     private String selectedCode;
     private String selectedItem;
     private TextView selected_item;
     private EditText start_date_text, end_date_text, number_of_people;
+
     private View progress_circle;
-    private ArrayList<TripInfo> searchResult = new ArrayList<TripInfo>();
-    private ArrayList<TripInfo> copyOfSearchResult = new ArrayList<TripInfo>();
+    private ArrayList<Map<String, Object>> searchResult = new ArrayList<Map<String, Object>>();
+    private ArrayList<Map<String, Object>> copyOfSearchResult = new ArrayList<Map<String, Object>>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +80,12 @@ public class ListAvailableActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> res = document.getData();
-                                String title = res.get("title").toString();
-                                String travel_code = res.get("travel_code").toString();
-                                String start_date = res.get("start_date").toString();
-                                String end_date = res.get("end_date").toString();
-                                String lower_bound = res.get("lower_bound").toString();
-                                String upper_bound = res.get("upper_bound").toString();
-                                String price = res.get("price").toString();
-                                TripInfo obj = new TripInfo(title, travel_code, start_date,
-                                        end_date, lower_bound, upper_bound, price, R.drawable.test);
-                                searchResult.add(obj);
-                                copyOfSearchResult.add(obj);
+                                res.put("picture", R.drawable.test);
+                                searchResult.add(res);
+                                copyOfSearchResult.add(res);
                             }
                             //build RecycleView
-                            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+                            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_available_recyclerView);
                             recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                             recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), copyOfSearchResult));
                         } else {
@@ -159,7 +154,7 @@ public class ListAvailableActivity extends AppCompatActivity {
                 if(_start_date_text.compareTo("") != 0) {
                     try {
                         Date sd1 = sdf.parse(_start_date_text);
-                        Date sd2 = sdf.parse(searchResult.get(i).getStart_date());
+                        Date sd2 = sdf.parse(searchResult.get(i).get("start_date").toString());
                         if(sd1.compareTo(sd2) > 0) continue;
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -168,26 +163,21 @@ public class ListAvailableActivity extends AppCompatActivity {
                 if(_end_date_text.compareTo("") != 0){
                     try {
                         Date sd1 = sdf.parse(_end_date_text);
-                        Date sd2 = sdf.parse(searchResult.get(i).getEnd_date());
+                        Date sd2 = sdf.parse(searchResult.get(i).get("end_date").toString());
                         if(sd1.compareTo(sd2) < 0) continue;
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
-                if(_number_of_people.compareTo("") != 0 && Integer.valueOf(_number_of_people) > Integer.valueOf(searchResult.get(i).getUpper_bound())){
+                if(_number_of_people.compareTo("") != 0 &&
+                        Integer.valueOf(_number_of_people) > Integer.valueOf(searchResult.get(i).get("upper_bound").toString())){
                     continue;
                 }
                 copyOfSearchResult.add(searchResult.get(i));
             }
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_available_recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
             recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), copyOfSearchResult));
         }
-
     };
-
-
 }
-
-
-

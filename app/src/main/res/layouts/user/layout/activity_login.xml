@@ -9,11 +9,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="帳號"/>
+        android:text="電子郵件"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
+        android:id="@+id/login_email"
         android:hint="請輸入電子郵件"
         />
     <TextView
@@ -28,8 +28,13 @@
         android:hint="請輸入密碼"
         />
     <Button
+        android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="登入"
         android:onClick="Login"/>
+    <ProgressBar
+        android:id="@+id/login_progress_circle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
