@@ -44,10 +44,11 @@ public class TripInfoAdapter extends RecyclerView.Adapter<TripInfoAdapter.ViewHo
             //Set onClick event to go to MoreTripInfoActivity.java
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(context, MoreTripInfoActivity.class);
-                it.putExtra("data", list);
+                Intent intent = new Intent(context, MoreTripInfoActivity.class);
+                intent.putExtra("data", list);
                 //it.setFlags(it.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(it);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
     }

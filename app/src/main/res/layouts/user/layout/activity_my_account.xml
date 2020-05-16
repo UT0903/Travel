@@ -4,25 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+    <ImageView
+        android:id="@+id/iv_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="名字"
+        android:layout_height="192dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/my_account"/>
+    <TextView
+        android:id="@+id/my_account_name"
+        android:background="#E4E3E3"
+        android:layout_height="62dp"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Name"
         />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="email"/>
+        android:id="@+id/my_account_email"
+        android:background="#E4E3E3"
+        android:layout_width="300dp"
+        android:gravity="center"
+        android:layout_height="62dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Email"/>
     <Button
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="我的訂單"
+        android:text="My order"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="#FADBD9"
         android:onClick="listMyOrder"
         />
     <Button
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="登出"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="#FADBD9"
+        android:text="Log out"
         android:onClick="Logout"/>
 
 

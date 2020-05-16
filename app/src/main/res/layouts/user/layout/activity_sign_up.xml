@@ -3,71 +3,106 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".user.SignUpActivity"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="使用者暱稱"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#D1EDFA">
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/login" />
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name"
-        android:hint="請輸入暱稱"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="電子郵件"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="10">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="帳號"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
-        android:hint="請輸入電子郵件"
-        android:inputType="textEmailAddress"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="手機"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phone"
-        android:inputType="phone"
-        android:hint="請輸入手機號碼"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="密碼"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="手機號碼"
+            android:inputType="phone"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
-        android:inputType="textPassword"
-        android:hint="請輸入密碼"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="再次輸入密碼"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="輸入密碼"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordDouble"
-        android:inputType="textPassword"
-        android:hint="請輸入密碼"
-        />
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="再次輸入密碼"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/signUp_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="註冊"
-        android:onClick="SignUp"/>
-    <ProgressBar
-        android:id="@+id/signUp_progress_circle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFE"
+        android:onClick="SignUp"
+        android:text="Sign up"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 </LinearLayout>

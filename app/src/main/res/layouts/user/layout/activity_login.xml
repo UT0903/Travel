@@ -5,36 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.LoginActivity"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="電子郵件"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#F3E7C5">
+
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/orange"/>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_email"
-        android:hint="請輸入電子郵件"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="密碼"/>
-    <EditText
-        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        app:boxBackgroundColor="#FFFFFE"
+        app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
-        android:inputType="textPassword"
-        android:hint="請輸入密碼"
-        />
+        android:layout_marginTop="50dp"
+        android:id="@+id/login_password"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
+        android:layout_gravity="center_horizontal"
+        app:boxBackgroundColor="#FFFFFE">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登入"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="80dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:background="#FFFFFE"
+        android:text="Log in"
         android:onClick="Login"/>
-    <ProgressBar
-        android:id="@+id/login_progress_circle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 </LinearLayout>

@@ -20,11 +20,14 @@ public class RegisterActivity extends MyAppCompatActivity {
 
     public void jumpLogin(View view){
         intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
         startActivity(intent);
     }
 
     public void jumSignUp(View view){
         intent = new Intent(RegisterActivity.this, SignUpActivity.class);
+        finish();
         startActivity(intent);
     }
 }

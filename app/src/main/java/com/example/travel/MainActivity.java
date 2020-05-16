@@ -29,12 +29,13 @@ public class MainActivity extends MyAppCompatActivity {
     public void myAccount(View v){
         GlobalVariable gv = (GlobalVariable)getApplicationContext();
         if(gv.isLogin == false){
-            Intent it = new Intent(MainActivity.this, RegisterActivity.class);
-            startActivity(it);
+            Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
         else{
-            Intent it = new Intent(MainActivity.this, MyAccountActivity.class);
-            startActivity(it);
+            Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
+            startActivity(intent);
         }
     }
 }

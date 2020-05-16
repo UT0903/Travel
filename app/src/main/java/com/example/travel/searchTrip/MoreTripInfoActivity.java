@@ -62,7 +62,9 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
         data = (HashMap<String, Object>) getIntent().getSerializableExtra("data");
         if(data.containsKey("numOfPeople")) modify = true;
         dataRef = db.collection("data")
+                .whereEqualTo("title", data.get("title").toString())
                 .whereEqualTo("travel_code", data.get("travel_code").toString())
+                .whereEqualTo("product_key", data.get("product_key").toString())
                 .whereEqualTo("start_date", data.get("start_date").toString());
         title = (TextView) findViewById(R.id.trip_title);
         title.setText(data.get("title").toString());
@@ -162,9 +164,6 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
                     HashMap<String, Object> newData = new HashMap<>(data);
                     newData.put("numOfPeople", num);
                     newData.put("orderTime", new Date());
-                    newData.remove("lower_bound");
-                    newData.remove("upper_bound");
-                    newData.remove("product_key");
                     db.collection("user")
                             .document(gv.documentReference)
                             .update("order", FieldValue.arrayUnion(newData));

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".searchTrip.PickRegionActivity"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
     <SearchView
         android:id="@+id/searchView"

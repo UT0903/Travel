@@ -1,20 +1,16 @@
 package com.example.travel;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class MyAppCompatActivity extends AppCompatActivity {
     public GlobalVariable gv;
@@ -22,12 +18,17 @@ public class MyAppCompatActivity extends AppCompatActivity {
     private ProgressBar circle;
 
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public void startSearch(ProgressBar circle, Button btn){
-        circle.setVisibility(View.VISIBLE);
+    public void startSearch(Button btn){
+        View view = getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        //circle.setVisibility(View.VISIBLE);
         btn.setEnabled(false);
     }
-    public void initSearch(ProgressBar circle, Button btn){
-        circle.setVisibility(View.GONE);
+    public void initSearch(Button btn){
+        //circle.setVisibility(View.GONE);
         btn.setEnabled(true);
     }
     @Override
@@ -36,6 +37,8 @@ public class MyAppCompatActivity extends AppCompatActivity {
         gv = (GlobalVariable)getApplicationContext();
         getSupportActionBar().hide();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
     @Override
     protected void onStart(){
