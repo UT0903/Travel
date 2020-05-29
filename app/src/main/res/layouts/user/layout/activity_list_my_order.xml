@@ -6,16 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".user.ListMyOrderActivity"
     android:orientation="vertical">
-    <TextView
+    <ImageView
+        android:id="@+id/iv_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="我的訂單"
-        />
-    <TextView
+        android:layout_height="200dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/my_order" />
+
+    <ImageView
         android:id="@+id/list_my_order_noOrder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="您尚無任何訂單"
+        android:layout_height="match_parent"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/no_order"
         android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_my_order_recyclerView"

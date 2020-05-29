@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.travel.GlobalVariable;
 import com.example.travel.MainActivity;
 import com.example.travel.MyAppCompatActivity;
 import com.example.travel.R;
@@ -23,6 +22,7 @@ public class MyAccountActivity extends MyAppCompatActivity {
     }
     public void listMyOrder(View view){
         Intent intent = new Intent(MyAccountActivity.this, ListMyOrderActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
     public void Logout(View view){

@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="match_parent"
+        android:layout_height="475dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/travel" />
 
     <Button
-        android:text="查詢可報名行程"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:onClick="searchAvailable"/>
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="searchAvailable"
+        android:text="Search Trip"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="我的帳戶"
-        android:onClick="myAccount"/>
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="56dp"
+        android:onClick="myAccount"
+        android:text="My Account"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-</LinearLayout>
+</RelativeLayout>

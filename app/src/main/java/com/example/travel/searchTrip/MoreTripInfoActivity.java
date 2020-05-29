@@ -157,6 +157,10 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
                             .document(gv.documentReference)
                             .update("order", FieldValue.arrayUnion(newData));
                     Log.d("TAG", "modify successful");
+                    intent = new Intent(MoreTripInfoActivity.this, ListMyOrderActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    finish();
+                    startActivity(intent);
                 }
                 else{
                     remain -= num;
@@ -168,16 +172,15 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
                             .document(gv.documentReference)
                             .update("order", FieldValue.arrayUnion(newData));
                     Log.d("TAG", "update successful");
+                    intent = new Intent(MoreTripInfoActivity.this, ListMyOrderActivity.class);
+                    finish();
+                    startActivity(intent);
                 }
-                intent = new Intent(MoreTripInfoActivity.this, ListMyOrderActivity.class);
-                finish();
-                startActivity(intent);
             }
         }
         else{
-            Toast.makeText(MoreTripInfoActivity.this, "請先登入", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MoreTripInfoActivity.this, "Please Log in First", Toast.LENGTH_SHORT).show();
             intent = new Intent(MoreTripInfoActivity.this, RegisterActivity.class);
-            finish();
             startActivity(intent);
         }
     }
@@ -187,6 +190,7 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
                 .document(gv.documentReference)
                 .update("order", FieldValue.arrayRemove(data));
         intent = new Intent(MoreTripInfoActivity.this, ListMyOrderActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         finish();
         startActivity(intent);
     }

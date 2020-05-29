@@ -30,7 +30,6 @@ public class MainActivity extends MyAppCompatActivity {
         GlobalVariable gv = (GlobalVariable)getApplicationContext();
         if(gv.isLogin == false){
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
         else{

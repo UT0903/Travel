@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iv_1"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="200dp"
         android:background="#FF9900"
         android:scaleType="fitXY"
         android:src="@drawable/orange2"/>
@@ -31,6 +31,6 @@
         android:layout_marginTop="50dp"
         android:background="#F3E7C5"
         android:onClick="jumSignUp"
-        android:text="Sign in"
+        android:text="Sign up"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 </LinearLayout>

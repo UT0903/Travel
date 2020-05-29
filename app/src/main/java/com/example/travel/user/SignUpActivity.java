@@ -129,7 +129,8 @@ public class SignUpActivity extends MyAppCompatActivity {
                         gv.documentReference = documentReference.getId();
                         gv.personalInfo = data;
                         initSearch(btn);
-                        intent = new Intent(SignUpActivity.this, MyAccountActivity.class);
+                        intent = new Intent(SignUpActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         finish();
                         startActivity(intent);
                     }

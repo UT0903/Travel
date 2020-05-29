@@ -65,9 +65,9 @@ public class LoginActivity extends MyAppCompatActivity {
                                     gv.documentReference = document.getId();
                                     gv.personalInfo = document.getData();
                                     initSearch(btn);
-                                    Intent intent = new Intent(getBaseContext(), MyAccountActivity.class);
+                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     finish();
-                                    //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 }
                             }

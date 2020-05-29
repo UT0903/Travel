@@ -8,49 +8,84 @@
     android:orientation="vertical">
     <TextView
         android:id="@+id/trip_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="40dp"
         />
     <TextView
         android:id="@+id/trip_start_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="40dp"
         />
     <TextView
         android:id="@+id/trip_end_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="40dp"
         />
     <Button
         android:id="@+id/trip_decrease"
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#FDF5E6"
         android:text="-"
         />
     <TextView
         android:id="@+id/trip_num_of_people"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="0"/>
+        android:layout_width="350dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     <Button
         android:id="@+id/trip_increase"
-        android:layout_width="match_parent"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="350dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#FDF5E6"
         android:text="+"
         />
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="送出訂單"
-        android:onClick="submit"
         android:id="@+id/moreTripInfo_submitBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="350dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="0dp"
+        android:background="#F5E6F8"
         android:enabled="false"
+        android:onClick="submit"
+        android:text="Send"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         />
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="刪除訂單"
-        android:onClick="delete"
         android:id="@+id/moreTripInfo_deleteBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:background="#F5E6F8"
+        android:onClick="delete"
+        android:text="Delete"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         />
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="190dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/smile" />
 </LinearLayout>

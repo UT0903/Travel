@@ -61,7 +61,6 @@ public class PickRegionActivity extends MyAppCompatActivity {
                 Intent it = new Intent(PickRegionActivity.this, ListAvailableActivity.class);
                 it.putExtra("selectedCode", selectedCode);
                 it.putExtra("selectedItem", selectedItem);
-                finish();
                 startActivity(it);
             }
         });

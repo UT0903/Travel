@@ -80,7 +80,7 @@ public class ListAvailableActivity extends MyAppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> res = document.getData();
-                                res.put("picture", R.drawable.test);
+                                res.put("picture", R.drawable.smile);
                                 searchResult.add(res);
                                 copyOfSearchResult.add(res);
                             }
