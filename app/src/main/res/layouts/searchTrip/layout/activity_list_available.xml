@@ -17,27 +17,30 @@
             />
         <EditText
             android:id="@+id/start_date_text"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:onClick="datePicker"
             android:text=""
-            android:hint="輸入起始日期"
+            android:hint="enter start date"
             android:cursorVisible="false"
             android:focusable="false"
             />
         <EditText
             android:id="@+id/end_date_text"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:onClick="datePicker"
             android:text=""
-            android:hint="輸入結束日期"
+            android:hint="enter end date"
             android:cursorVisible="false"
             android:focusable="false"/>
         <EditText
             android:id="@+id/number_of_people"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:inputType="numberDecimal"
             android:hint="請輸入人數"
             />

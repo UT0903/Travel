@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".user.SignUpActivity"
-    android:padding="16dp"
     android:orientation="vertical"
     android:background="#D1EDFA">
     <ImageView
         android:id="@+id/iv_1"
-        android:layout_width="394dp"
-        android:layout_height="170dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:adjustViewBounds="false"
         android:background="#FF9900"

@@ -33,7 +33,8 @@
             android:id="@+id/myOrder_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="修改"/>
+            android:text="modify"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

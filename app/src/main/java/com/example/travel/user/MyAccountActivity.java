@@ -2,6 +2,7 @@ package com.example.travel.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class MyAccountActivity extends MyAppCompatActivity {
         setContentView(R.layout.activity_my_account);
         name = findViewById(R.id.my_account_name);
         email = findViewById(R.id.my_account_email);
+        //Log.e("MyAccount", gv.personalInfo.get("name").toString());
         name.setText(gv.personalInfo.get("name").toString());
         email.setText(gv.personalInfo.get("email").toString());
     }

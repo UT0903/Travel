@@ -44,6 +44,7 @@ public class OrderInfoAdapter extends RecyclerView.Adapter<OrderInfoAdapter.View
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(context, MoreTripInfoActivity.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 it.putExtra("data", list);
                 context.startActivity(it);
             }

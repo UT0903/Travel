@@ -7,6 +7,7 @@
     tools:context=".searchTrip.MoreTripInfoActivity"
     android:orientation="vertical">
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/trip_title"
         android:layout_width="350dp"
         android:layout_gravity="center_horizontal"
@@ -28,6 +29,7 @@
         />
     <Button
         android:id="@+id/trip_decrease"
+        android:layout_marginTop="10dp"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -83,8 +85,7 @@
         android:id="@+id/iv_1"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:layout_height="190dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="180dp"
         android:background="#FF9900"
         android:scaleType="fitXY"
         android:src="@drawable/smile" />
