@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.ListMyOrderActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#6F9E9E9E">
     <ImageView
         android:id="@+id/iv_1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:background="#FF9900"
         android:scaleType="fitXY"
         android:src="@drawable/my_order" />

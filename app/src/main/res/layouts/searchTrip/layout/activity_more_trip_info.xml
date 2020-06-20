@@ -5,56 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".searchTrip.MoreTripInfoActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ADC7E0">
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#FF9900"
+        android:scaleType="fitXY"
+        android:src="@drawable/smile" />
     <TextView
+        android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:id="@+id/trip_title"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_height="40dp"
-        />
-    <TextView
-        android:id="@+id/trip_start_date"
-        android:layout_width="350dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="40dp"
-        />
-    <TextView
-        android:id="@+id/trip_end_date"
-        android:layout_width="350dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="40dp"
-        />
-    <Button
-        android:id="@+id/trip_decrease"
-        android:layout_marginTop="10dp"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#FDF5E6"
-        android:text="-"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="#2F0000"
         />
-    <TextView
-        android:id="@+id/trip_num_of_people"
-        android:layout_width="350dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="0"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
-    <Button
-        android:id="@+id/trip_increase"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="350dp"
-        android:layout_marginTop="10dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#FDF5E6"
-        android:text="+"
-        />
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:textSize="25dp"
+            android:id="@+id/trip_start_date"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:layout_weight=".4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="~"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:layout_weight=".2"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:textSize="25dp"
+            android:id="@+id/trip_end_date"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:layout_weight=".4"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".30"
+            android:text="Number of People: "
+            android:textSize="25dp"
+            android:textColor="#000000"/>
+        <Button
+            android:id="@+id/trip_decrease"
+            android:layout_weight=".25"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="#FDF5E6"
+            android:text="-"
+            android:textSize="30dp"
+            />
+        <TextView
+            android:id="@+id/trip_num_of_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".20"
+            android:text="0"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:gravity="center_horizontal" />
+        <Button
+            android:id="@+id/trip_increase"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".25"
+            android:background="#FDF5E6"
+            android:text="+"
+            android:textSize="30dp"
+            />
+    </LinearLayout>
     <Button
         android:id="@+id/moreTripInfo_submitBtn"
         style="@style/Widget.AppCompat.Button.Borderless"
@@ -62,7 +112,6 @@
         android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="0dp"
         android:background="#F5E6F8"
         android:enabled="false"
         android:onClick="submit"
@@ -81,12 +130,4 @@
         android:text="Delete"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         />
-    <ImageView
-        android:id="@+id/iv_1"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="180dp"
-        android:background="#FF9900"
-        android:scaleType="fitXY"
-        android:src="@drawable/smile" />
 </LinearLayout>

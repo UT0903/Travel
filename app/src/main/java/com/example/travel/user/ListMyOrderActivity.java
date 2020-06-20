@@ -24,7 +24,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+//List all order belongs to the user
 public class ListMyOrderActivity extends MyAppCompatActivity {
     GlobalVariable gv;
     ImageView noOrder;

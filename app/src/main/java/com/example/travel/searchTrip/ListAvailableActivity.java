@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,13 +57,11 @@ public class ListAvailableActivity extends MyAppCompatActivity {
 
         progress_circle = (View) findViewById(R.id.progress_circle);
 
-        selected_item.setText(selectedItem);
+        selected_item.setText("Search Result for: " + selectedItem);
 
         start_date_text.addTextChangedListener(watcher);
         end_date_text.addTextChangedListener(watcher);
         number_of_people.addTextChangedListener(watcher);
-
-        //Toast.makeText(this, "selectedCode = " + selectedCode + "selectedItem =" + selectedItem + "=", Toast.LENGTH_LONG).show();
         queryDatabase();
 
 
@@ -78,9 +77,23 @@ public class ListAvailableActivity extends MyAppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            Field[] ID_Fields = R.drawable.class.getFields();
+                            //Get certain picture from local database
+                            int iconResId = R.drawable.smile;
+                            for (Field f : ID_Fields) {
+                                try {
+                                   if(f.getName().equals("p" + selectedCode)){
+                                       iconResId = getResources().getIdentifier("p" + selectedCode, "drawable",getPackageName());
+                                       Log.e("pics", f.getName() + String.valueOf(iconResId));
+                                   }
+                                } catch (IllegalArgumentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            //Save all available choices in an array
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> res = document.getData();
-                                res.put("picture", R.drawable.smile);
+                                res.put("picture", iconResId);
                                 searchResult.add(res);
                                 copyOfSearchResult.add(res);
                             }
@@ -96,7 +109,7 @@ public class ListAvailableActivity extends MyAppCompatActivity {
                     }
                 });
     }
-
+    // Date picker for selecting date in a certain period of time
     private Date startDate, endDate;
     private int nowDate;
     public void datePicker(View v) {
@@ -119,7 +132,6 @@ public class ListAvailableActivity extends MyAppCompatActivity {
                 c.set(year, month, day);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 //a bug in SDK that can be solved by adding 1 to month
-
                 if (nowDate == 0) {
                     startDate = c.getTime();
                     start_date_text.setText(sdf.format(c.getTime()));
@@ -136,7 +148,7 @@ public class ListAvailableActivity extends MyAppCompatActivity {
             dialog.getDatePicker().setMinDate(startDate.getTime());
         dialog.show();
     }
-
+    //Set TextWatcher whenever the certain date or number of people were selected, it will modify the status.
     private TextWatcher watcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -144,7 +156,6 @@ public class ListAvailableActivity extends MyAppCompatActivity {
         public void afterTextChanged(Editable s) {}
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            //progress_circle.setVisibility(View.VISIBLE);
             copyOfSearchResult.clear();
             String _start_date_text = start_date_text.getText().toString().trim();
             String _end_date_text = end_date_text.getText().toString().trim();
@@ -175,6 +186,7 @@ public class ListAvailableActivity extends MyAppCompatActivity {
                 }
                 copyOfSearchResult.add(searchResult.get(i));
             }
+            //Renew recycle view
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_available_recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
             recyclerView.setAdapter(new TripInfoAdapter(getBaseContext(), copyOfSearchResult));

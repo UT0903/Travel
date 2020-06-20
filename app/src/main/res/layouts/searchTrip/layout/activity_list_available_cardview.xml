@@ -4,8 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:padding="6dp"
-    app:cardBackgroundColor="#ffdddddd"
-    app:cardCornerRadius="28dp"
     app:cardElevation="6dp">
 
     <LinearLayout
@@ -25,20 +23,29 @@
             android:orientation="vertical">
 
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/titleId"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                  />
 
             <TextView
                 android:id="@+id/dateId"
+                android:paddingLeft="10dp"
+                android:textColor="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                  />
             <TextView
                 android:id="@+id/priceId"
+                android:textColor="#000000"
+                android:paddingLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                  />
         </LinearLayout>
     </LinearLayout>

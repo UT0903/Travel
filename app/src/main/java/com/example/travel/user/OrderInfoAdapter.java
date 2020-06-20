@@ -37,8 +37,10 @@ public class OrderInfoAdapter extends RecyclerView.Adapter<OrderInfoAdapter.View
         final HashMap<String, Object> list = (HashMap<String, Object>) this.list.get(position);
         holder.title.setText(String.valueOf(list.get("title").toString()));
         String date = list.get("start_date") + "~" + list.get("end_date");
-        holder.date.setText(date);
-        holder.price.setText(list.get("price").toString());
+        holder.date.setText("Date: " + date);
+        holder.price.setText("Total Price: " +
+                String.valueOf(Integer.parseInt(list.get("price").toString()) * Integer.parseInt(list.get("numOfPeople").toString())));
+        holder.numOfPeople.setText("Order Num: " + list.get("numOfPeople").toString());
         holder.btn.setOnClickListener(new View.OnClickListener() {
             //Set onClick event to go to MoreTripInfoActivity.java
             @Override

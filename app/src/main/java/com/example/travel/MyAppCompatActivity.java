@@ -11,27 +11,28 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-
+//Override AppCompatActivity in order to add some pre-doing jobs in every activity
 public class MyAppCompatActivity extends AppCompatActivity {
     public GlobalVariable gv;
     private Button btn;
     private ProgressBar circle;
 
     public FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //A start-search function that can be called by every activity
     public void startSearch(Button btn){
         View view = getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-        //circle.setVisibility(View.VISIBLE);
         btn.setEnabled(false);
     }
+    //An end-search function that can be called by every activity
     public void initSearch(Button btn){
-        //circle.setVisibility(View.GONE);
         btn.setEnabled(true);
     }
     @Override
+    //Hide action bar when creating every activity
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         gv = (GlobalVariable)getApplicationContext();

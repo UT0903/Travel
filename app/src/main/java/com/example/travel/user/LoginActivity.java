@@ -40,7 +40,7 @@ public class LoginActivity extends MyAppCompatActivity {
         btn = findViewById(R.id.login_btn);
         initSearch(btn);
     }
-
+    //Onclick LogIn button to submit personal info to FireStore, checking for the info correctness
     public void Login(View view){
         String email = this.email.getEditText().getText().toString().trim();
         String password = this.password.getEditText().getText().toString().trim();
@@ -79,6 +79,7 @@ public class LoginActivity extends MyAppCompatActivity {
                 });
 
     }
+    //Input check
     private boolean emailCheck(String email){
         if (email.compareTo("") == 0) {
             this.email.setError("此欄位必填");

@@ -5,51 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#6DABA9A9"
     tools:context=".searchTrip.ListAvailableActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#B200BCD4">
         <TextView
+            android:typeface="sans"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/selected_item"
+            />
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/selected_item"
-            />
-        <EditText
-            android:id="@+id/start_date_text"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:onClick="datePicker"
-            android:text=""
-            android:hint="enter start date"
-            android:cursorVisible="false"
-            android:focusable="false"
-            />
-        <EditText
-            android:id="@+id/end_date_text"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:onClick="datePicker"
-            android:text=""
-            android:hint="enter end date"
-            android:cursorVisible="false"
-            android:focusable="false"/>
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/start_date_text"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="60dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="datePicker"
+                android:text=""
+                android:hint="start date"
+                android:cursorVisible="false"
+                android:focusable="false"
+                />
+            <TextView
+                android:text="to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+            <EditText
+                android:id="@+id/end_date_text"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="datePicker"
+                android:text=""
+                android:hint="end date"
+                android:cursorVisible="false"
+                android:focusable="false"/>
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/number_of_people"
-            android:layout_width="350dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:inputType="numberDecimal"
-            android:hint="請輸入人數"
+            android:hint="number of people"
             />
     </LinearLayout>
-
     <ProgressBar
+        android:layout_gravity="center"
+        android:layout_height="50dp"
         android:id="@+id/progress_circle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_available_recyclerView"

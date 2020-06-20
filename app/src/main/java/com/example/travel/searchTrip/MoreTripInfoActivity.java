@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +54,11 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
     private Query dataRef, personalInfoRef;
     private DocumentReference documentRef;
     private boolean modify;
-
+    private ImageView im;
     @Override
+    //Set up all view in data passed from ListAvailableActivity.
+    //This activity will show when enter from either ListAvailableActivity (to order the trip)
+    //or ListMyOrderActivity (to modify or delete the trip)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -74,12 +78,13 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
         start_date.setText(data.get("start_date").toString());
         end_date = (TextView) findViewById(R.id.trip_end_date);
         end_date.setText(data.get("end_date").toString());
-
+        im = findViewById(R.id.iv_1);
+        im.setImageResource(Integer.parseInt(data.get("picture").toString()));
         number_of_people = (TextView) findViewById(R.id.trip_num_of_people);
         increaseBtn = (Button) findViewById(R.id.trip_increase);
         decreaseBtn = (Button) findViewById(R.id.trip_decrease);
         if(modify){
-            submitBtn.setText("修改訂單");
+            submitBtn.setText("Modify");
             myOrderNum = Integer.parseInt(data.get("numOfPeople").toString());
             num = myOrderNum;
             number_of_people.setText(String.valueOf(myOrderNum));
@@ -116,7 +121,7 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
         increaseBtn.setOnClickListener(handler);
         decreaseBtn.setOnClickListener(handler);
     }
-
+    //Add snap shot listener to listen from FireStore whenever the data being changed by others, thus to prevent race condition.
     @Override
     protected void onStart() {
         super.onStart();
@@ -138,6 +143,7 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
                 });
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
+    //OnClick the Send button to submit the (modified) order into the FireStore
     public void submit(View view){
         if(gv.isLogin){
             if(myOrderNum + remain < num){
@@ -179,11 +185,13 @@ public class MoreTripInfoActivity extends MyAppCompatActivity {
             }
         }
         else{
+            //Not login yet, redirected to RegisterActivity first
             Toast.makeText(MoreTripInfoActivity.this, "Please Log in First", Toast.LENGTH_SHORT).show();
             intent = new Intent(MoreTripInfoActivity.this, RegisterActivity.class);
             startActivity(intent);
         }
     }
+    //OnClick the delete button to delete the order from FireStore
     public void delete(View view){
         documentRef.update("upper_bound", String.valueOf(remain + myOrderNum));
         db.collection("user")

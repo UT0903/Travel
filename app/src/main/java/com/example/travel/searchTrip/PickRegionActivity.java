@@ -1,9 +1,9 @@
 package com.example.travel.searchTrip;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,7 +40,7 @@ public class PickRegionActivity extends MyAppCompatActivity {
         searchView = (SearchView) findViewById(R.id.searchView);
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, str);
         lv.setAdapter(adapter);
-
+        //Modify the search word whenever the query string changed
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextSubmit(String text){
@@ -52,6 +52,7 @@ public class PickRegionActivity extends MyAppCompatActivity {
                 return false;
             }
         });
+        //directed to the search result page when clicking the search string
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,6 +66,7 @@ public class PickRegionActivity extends MyAppCompatActivity {
             }
         });
     }
+    // get travel code's name from local database
     private void getTravelCodeName(Context context){
         try{
             JSONArray codeArray = new JSONArray(loadTravelCode(context));
@@ -85,6 +87,7 @@ public class PickRegionActivity extends MyAppCompatActivity {
             return;
         }
     }
+    //load travel code from local database
     private String loadTravelCode(Context context){
         String json = null;
         try {
@@ -100,8 +103,5 @@ public class PickRegionActivity extends MyAppCompatActivity {
         }
         return json;
     }
-
-
-
 }
 
