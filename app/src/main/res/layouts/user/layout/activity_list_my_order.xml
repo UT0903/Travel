@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.ListMyOrderActivity"
+    android:background="#FBF0CD"
     android:orientation="vertical"
-    android:background="#6F9E9E9E">
+    tools:context=".user.ListMyOrderActivity">
+
     <ImageView
         android:id="@+id/iv_1"
         android:layout_width="match_parent"
@@ -22,9 +23,10 @@
         android:background="#FF9900"
         android:scaleType="fitXY"
         android:src="@drawable/no_order"
-        android:visibility="gone"/>
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_my_order_recyclerView"
         android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
